@@ -20,6 +20,7 @@
         <nav id="nav">
             <ul>
                 <li class="current"><a href="/">Home</a></li>
+                <li> <a href="/news">news</a></li>
                 <li>
                     <a href="#">Dropdown</a>
                     <ul>
@@ -41,10 +42,11 @@
                 </li>
 
                 {% if session %}
-                <li> <a href="/about">exit</a></li>
+                <li> <a href="/login">exit</a></li>
                 {% else %}
-                <li> <a href="/about">ext</a></li>
+                <li> <a href="/login">login</a></li>
                 {% endif %}
+
                 <!--
                 <li><a href="/left-sidebar">Left Sidebar</a></li>
                 <li><a href="/right-sidebar">Right Sidebar</a></li>

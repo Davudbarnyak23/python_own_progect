@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <p>{{message}}</p>
-            <form class="form-horizontal">
+            <form method="post" action="{{ url_for('login')}}" class="form-horizontal">
                 <div class="form-group">
                     <label for="Email" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
