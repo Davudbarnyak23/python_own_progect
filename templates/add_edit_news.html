@@ -1,0 +1,21 @@
+{% extends "layout.html" %}
+
+{% block main %}
+
+<h2> {{ massage }}</h2>
+
+<form>
+    <input type="numder" class="hidden" name="id" value="{{id}}">
+
+    <label for="name">News</label>
+    <input type="text" class="hidden" name="name" value="{{name}}">
+
+    <label for="image">Image</label>
+    <input type="text" name="image" value="{{image}}">
+
+    <label for="text"> text news</label>
+    <textarea name="text">{{text}}</textarea>
+</form>
+
+
+{% endblock %}

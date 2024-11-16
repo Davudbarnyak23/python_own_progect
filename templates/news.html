@@ -2,39 +2,41 @@
 
 {% block main %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>новини</h1>
-    {% for item in list_news %}
-    <div class="col-md-4 md-margin-bottom-40">
-    <img class="img-responsive" src="{{item.image}}" alt="">
-    <p>{{item.name}}</p>
-    <h2>{{item.text}}</h2>
-    </div>
+<h1>новини</h1>
+{% for item in list_news %}
+<div class="col-md-4 md-margin-bottom-40">
+    <a href="/news/{{item.id}}">
+<img class="img-responsive" src="{{item.image}}" alt="">
+    </a>
+<p>{{item.name}}</p>
+<h2>{{item.text}}</h2>
+    <p> <a href="/news/{{item.id}}">open news</a> </p>
+</div>
 
-    {% if loop.index % 3 == 0 %}
-    <div style="clear:both;"></div>
+<p>{{item.name}}</p>
+{% if user_id%}
+    <a href="/edit_news/{{item.id}}">
+        <button>re news</button>
+    </a>
+{% endif %}
+
+{% if loop.index % 3 == 0 %}
+<div style="clear:both;"></div>
+{% endif %}
+{% endfor %}
+
+<div class="row">
+    {% if list_news.has_prev %}
+    <a href="{{ url_for('news', page=list_news.prev_num)}}">prev</a>
     {% endif %}
+
+    {% for page_num in list_news.iter_pages() %}
+    <a href="{{ url_for('news', page=list_news.page_num)}}">{{page_num}}</a>
     {% endfor %}
 
-    <div class="row">
-        {% if list_news.has_prev %}
-        <a href="{{ url_for('news', page=list_news.prev_num)}}">prev</a>
-        {% endif %}
+    {% if list_news.next_num %}
+    <a href="{{ url_for('news', page=list_news.next_num)}}">next</a>
+    {% endif %}
+</div>
 
-        {% for page_num in list_news.iter_pages() %}
-        <a href="{{ url_for('news', page=list_news.page_num)}}">{{page_num}}</a>
-        {% endfor %}
-
-        {% if list_news.next_num %}
-        <a href="{{ url_for('news', page=list_news.next_num)}}">next</a>
-        {% endif %}
-    </div>
-</body>
-</html>
 {% endblock %}
